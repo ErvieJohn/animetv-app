@@ -1,7 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 
+import axios from "axios";
+import { useEffect } from 'react';
+
+
+
 function App() {
+  const url = "https://api.consumet.org/anime/9anime/demon?page=2";
+
+  useEffect(()=>{
+    // Using the example query "demon", and looking at the 2nd page of results.
+    
+    const fetchData = async () => {
+        try {
+            const data = await axios.get(url, { params: { page: 2 } });
+            console.log(data);
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    };
+
+    fetchData();
+  
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
