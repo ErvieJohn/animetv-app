@@ -3,18 +3,18 @@ import './App.css';
 
 import axios from "axios";
 import { useEffect } from 'react';
+import { GOGOANIME } from './Config';
 
 
 
 function App() {
-  const url = "https://api.consumet.org/anime/9anime/demon?page=2";
 
   useEffect(()=>{
     // Using the example query "demon", and looking at the 2nd page of results.
     
     const fetchData = async () => {
         try {
-            const data = await axios.get(url, { params: { page: 2 } });
+            const data = await axios.get(`${GOGOANIME + "/top-airing"}`);
             console.log(data);
             return data;
         } catch (err) {
